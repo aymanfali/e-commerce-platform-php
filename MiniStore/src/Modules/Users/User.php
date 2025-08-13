@@ -2,7 +2,6 @@
 
 namespace MiniStore\Modules\Users;
 
-abstract class User 
-{
+abstract class User {
     
 }
