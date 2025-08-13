@@ -2,6 +2,7 @@
 
 namespace MiniStore\Modules\Core;
 
-class Core{
+class Core
+{
     
 }

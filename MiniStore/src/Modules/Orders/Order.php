@@ -3,6 +3,7 @@
 namespace MiniStore\Modules\Orders;
 
 
-class Order {
+class Order 
+{
     
 }
