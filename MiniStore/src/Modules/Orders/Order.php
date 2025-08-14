@@ -44,6 +44,10 @@ class Order
         }
     }
 
+    public function getTotalPrice(): float {
+        return $this->totalPrice;
+    }
+
     public function applyDiscount(float $discountPercentage): void
     {
         $this->totalPrice = $this->applyDiscount($this->totalPrice, $discountPercentage) ?? 0;
