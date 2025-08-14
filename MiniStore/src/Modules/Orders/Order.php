@@ -4,13 +4,14 @@ namespace MiniStore\Modules\Orders;
 
 use MiniStore\Modules\Core\DiscountTrait;
 use MiniStore\Modules\Core\LoggerTrait;
+use MiniStore\Modules\Core\OrderStatusTrait;
 use MiniStore\Modules\Users\User;
 use MiniStore\Modules\Products\Product;
 
 class Order
 {
 
-    use LoggerTrait, DiscountTrait;
+    use LoggerTrait, DiscountTrait, OrderStatusTrait;
 
     private User $customer;
     private array $products = [];
@@ -19,6 +20,8 @@ class Order
     public function __construct(User $customer)
     {
         $this->customer = $customer;
+        $this->setStatus('pending');
+
         $this->log("Order created for customer: {$customer->getName()}");
     }
 
@@ -41,7 +44,8 @@ class Order
         }
     }
 
-    public function applyDiscount(float $discountPercentage): void {
+    public function applyDiscount(float $discountPercentage): void
+    {
         $this->totalPrice = $this->applyDiscount($this->totalPrice, $discountPercentage) ?? 0;
         $this->log("Discount applied. New total: {$this->totalPrice}");
     }
