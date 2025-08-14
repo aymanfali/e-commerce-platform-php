@@ -2,6 +2,7 @@
 
 namespace MiniStore\Modules\Orders;
 
+use MiniStore\Modules\Core\DiscountTrait;
 use MiniStore\Modules\Core\LoggerTrait;
 use MiniStore\Modules\Users\User;
 use MiniStore\Modules\Products\Product;
@@ -9,7 +10,7 @@ use MiniStore\Modules\Products\Product;
 class Order
 {
 
-    use LoggerTrait;
+    use LoggerTrait, DiscountTrait;
 
     private User $customer;
     private array $products = [];
@@ -38,5 +39,10 @@ class Order
                 $this->log("Failed to add product: " . $e->getMessage());
             }
         }
+    }
+
+    public function applyDiscount(float $discountPercentage): void {
+        $this->totalPrice = $this->applyDiscount($this->totalPrice, $discountPercentage) ?? 0;
+        $this->log("Discount applied. New total: {$this->totalPrice}");
     }
 }
