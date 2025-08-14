@@ -2,15 +2,21 @@
 
 namespace MiniStore\Modules\Payments;
 
-class PaypalGateway implements PaymentGateway {
+use MiniStore\Modules\Core\LoggerTrait;
 
-    public function processPayment(float $amount): bool {
-        echo ("Processing Paypal payment of $" . $amount);
+class PaypalGateway implements PaymentGateway
+{
+
+    use LoggerTrait;
+
+    public function processPayment(float $amount): bool
+    {
+        $this->log("Processing Paypal payment of $" . $amount);
         if ($amount > 0) {
-            echo "Paypal payment successful.";
+            $this->log("Paypal payment successful.");
             return true;
         }
-        echo "Paypal payment failed.";
+        $this->log("Paypal payment failed.");
         return false;
     }
 }
