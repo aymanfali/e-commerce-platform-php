@@ -1,31 +1,37 @@
 <?php
-
-
-// Include autoloader and config file
-require 'autoloader.php';
 require 'config.php';
+require 'vendor/autoload.php';
+require "MiniStore/src/Modules/Products/Product.php";
+require "MiniStore/src/Modules/Users/Customer.php";
+require "MiniStore/src/Modules/Orders/Order.php";
+require "MiniStore/src/Modules/Payments/StripeGateway.php";
 
-use MiniStore\Modules\Products\Product;
-use MiniStore\Modules\Users\Customer;
 use MiniStore\Modules\Orders\Order;
 use MiniStore\Modules\Payments\StripeGateway;
+use MiniStore\Modules\Products\Product;
+use MiniStore\Modules\Users\Customer;
 
-
-// Create products
 $product1 = new Product("Laptop", 2500.00, 10);
+echo '<br>';
 $product2 = new Product("Mouse", 10.00, 50);
+echo '<br>';
 $product3 = new Product("Keyboard", 50.00, 20);
+echo '<br>';
 
-// Create a customer
-$customer = new Customer("John Doe", "john.doe@example.com");
+$customer = new Customer("Ayman", "ayman4swd@gmail.com");
+echo '<br>';
 
 // Create an order and add products
 $order = new Order($customer);
 $order->addProduct($product1, 1);
+echo '<br>';
 $order->addProduct($product2, 2);
+echo '<br>';
+
 
 // Apply discount
-$order->applyDiscount(DISCOUNT_PERCENTAGE);
+$order->applyDiscounts(DISCOUNT_PERCENTAGE);
+
 
 // Process payment using polymorphism
 echo "\n--- Processing Payment ---\n";
@@ -41,5 +47,8 @@ if ($isPaid) {
     $order->log("Order status updated to: {$order->getStatus()}");
     echo "\nPayment failed. Please try again.\n";
 }
+
+
+?>
 
 

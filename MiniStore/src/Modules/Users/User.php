@@ -2,6 +2,7 @@
 
 namespace MiniStore\Modules\Users;
 
+
 use MiniStore\Modules\Core\LoggerTrait;
 
 abstract class User 

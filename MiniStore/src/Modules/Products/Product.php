@@ -2,11 +2,12 @@
 
 namespace MiniStore\Modules\Products;
 
+require "MiniStore/src/Modules/Core/LoggerTrait.php";
+
 use MiniStore\Modules\Core\LoggerTrait;
 
 class Product
 {
-
     use LoggerTrait;
 
     private string $name;

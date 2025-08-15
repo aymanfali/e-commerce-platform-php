@@ -2,11 +2,12 @@
 
 namespace MiniStore\Modules\Payments;
 
+require "PaymentGateway.php";
+
 use MiniStore\Modules\Core\LoggerTrait;
 
 class StripeGateway implements PaymentGateway
 {
-
     use LoggerTrait;
 
     public function processPayment(float $amount): bool

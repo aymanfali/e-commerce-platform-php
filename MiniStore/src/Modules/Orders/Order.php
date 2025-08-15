@@ -2,6 +2,9 @@
 
 namespace MiniStore\Modules\Orders;
 
+require "MiniStore\src\Modules\Core\DiscountTrait.php";
+require "MiniStore\src\Modules\Core\OrderStatusTrait.php";
+
 use MiniStore\Modules\Core\DiscountTrait;
 use MiniStore\Modules\Core\LoggerTrait;
 use MiniStore\Modules\Core\OrderStatusTrait;
@@ -10,7 +13,6 @@ use MiniStore\Modules\Products\Product;
 
 class Order
 {
-
     use LoggerTrait, DiscountTrait, OrderStatusTrait;
 
     private User $customer;
@@ -48,7 +50,7 @@ class Order
         return $this->totalPrice;
     }
 
-    public function applyDiscount(float $discountPercentage): void
+    public function applyDiscounts(float $discountPercentage): void
     {
         $this->totalPrice = $this->applyDiscount($this->totalPrice, $discountPercentage) ?? 0;
         $this->log("Discount applied. New total: {$this->totalPrice}");

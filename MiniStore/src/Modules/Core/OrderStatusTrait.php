@@ -1,6 +1,4 @@
 <?php
-
-
 namespace MiniStore\Modules\Core;
 
 trait OrderStatusTrait

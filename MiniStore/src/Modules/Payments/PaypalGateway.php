@@ -2,6 +2,8 @@
 
 namespace MiniStore\Modules\Payments;
 
+require "MiniStore\Modules\Core\LoggerTrait.php";
+
 use MiniStore\Modules\Core\LoggerTrait;
 
 class PaypalGateway implements PaymentGateway

@@ -1,0 +1,17 @@
+{
+    "name": "ayman/ecommerce-platform-php",
+    "description": "simple ecommerce app using php oop",
+    "type": "project",
+    "authors": [
+        {
+            "name": "ayman f. ali",
+            "email": "ayman4swd@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MiniStore\\": "src/"
+        }
+    }
+}
