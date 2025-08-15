@@ -47,8 +47,3 @@ if ($isPaid) {
     $order->log("Order status updated to: {$order->getStatus()}");
     echo "\nPayment failed. Please try again.\n";
 }
-
-
-?>
-
-
